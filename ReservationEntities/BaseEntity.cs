@@ -4,7 +4,7 @@ namespace Reservation.Entities
 {
     public class BaseEntity
     {
-        DateTime CreateDate { get; set; } = DateTime.Now;
+       public DateTime CreateDate { get; set; } = DateTime.Now;
 
 
     }

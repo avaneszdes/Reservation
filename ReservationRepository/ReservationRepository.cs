@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Reservation.Repository
 {
-    public class ReservationRepository : IReservationRepository<Reserv>
+    public class ReservationRepository : IReservationRepository
     {
         private readonly ApplicationDbContext _dbContext;
         public ReservationRepository()
@@ -16,12 +16,14 @@ namespace Reservation.Repository
         public void Create(Reserv reserv)
         {
             _dbContext.Reservs.Add(reserv);
+            _dbContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
            Reserv reserv = _dbContext.Reservs.Find(id);
             if(reserv != null) { _dbContext.Reservs.Remove(reserv); }
+            _dbContext.SaveChanges();
         }
 
         public IEnumerable<Reserv> GetAllReservs()
@@ -34,14 +36,11 @@ namespace Reservation.Repository
             return _dbContext.Reservs.Find(id);
         }
 
-        public void Save()
-        {
-            _dbContext.SaveChanges();
-        }
 
         public void Update(Reserv reserv)
         {
             _dbContext.Reservs.Update(reserv);
+            _dbContext.SaveChanges();
         }
     }
 }
