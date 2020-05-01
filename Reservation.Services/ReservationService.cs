@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Reservation.Services
 {
-    class ReservationService : IReservationService
+    public class ReservationService : IReservationService
     {
         readonly IReservationRepository reservation;
         public ReservationService(IReservationRepository reservation)
@@ -21,14 +21,15 @@ namespace Reservation.Services
             return reservation.GetAllReservs().Where(x => x.CreateDate < fromTime && x.CreateDate > toTime);
         }
 
-        public void Create(Reserv reserv)
+        public int Create(Reserv reserv)
         {
             reservation.Create(reserv);
+            return reserv.Id;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            reservation.Delete(id);
+            return reservation.Delete(id);
         }
 
         public Reserv GetReserv(int id)

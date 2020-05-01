@@ -8,9 +8,9 @@ namespace Reservation.Repository
     public interface IReservationRepository
     {
         IEnumerable<Reserv> GetAllReservs();
-        void Create(Reserv reserv);
+        int Create(Reserv reserv);
         Reserv GetReserv(int id);
-        void Delete(int id);
+        bool Delete(int id);
         void Update(Reserv reserv);
        
     }

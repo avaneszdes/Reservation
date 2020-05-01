@@ -9,30 +9,31 @@ namespace Reservation.Services
 {
     public class ClientService : IClientService
     {
-        private IClientRepository Repository;
+        readonly IClientRepository _repository;
         public ClientService(IClientRepository clientReposotory)
         {
-            Repository = clientReposotory;
+            _repository = clientReposotory;
         }
 
-        public void Create(Client client)
+        public int Create(Client client)
         {
-            Repository.Create(client);
+            _repository.Create(client);
+            return client.Id;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            Repository.Delete(id);
+            return _repository.Delete(id);
         }
 
         public Client GetClient(int id)
         {
-            return Repository.GetClient(id);
+            return _repository.GetClient(id);
         }
 
         public IEnumerable<Client> GetAllClientIsBooking(DateTime date)
         {
-           return  Repository.GetAllClientIsBooking(date);
+           return  _repository.GetAllClientIsBooking(date);
         }
     }
 }

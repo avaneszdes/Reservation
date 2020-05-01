@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+@{
+    Layout = null;
+}
+
+
+@model Reservation.Entities.Client;
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    <title>Mysite</title>
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">My Restourant</div>
+        </div>
+    </div>
+</header>
+<div class="intro">
+    <div class="container">
+        <div class="intro__inner">
+            
+            @using (Html.BeginForm("Create", "Client", FormMethod.Post))
+            {
+                <p>
+                    @Html.LabelFor(m => m.Name, "Имя")<br/>
+                    @Html.TextBoxFor(m => m.Name)
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.SurName, "Фамилия")<br/>
+                    @Html.TextBoxFor(m => m.SurName, "", new {type = "Фамилия"})
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.PhoneNumber, "Номер телефона")<br/>
+                    @Html.TextBoxFor(m => m.PhoneNumber)
+                </p>
+                <p>
+                    <input type="submit" value="Отправить"/>
+                </p>
+            }
+        </div>>
+    </div>
+</div>
+
+</body>
+</html>

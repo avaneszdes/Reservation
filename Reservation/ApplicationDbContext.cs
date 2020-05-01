@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 using Reservation.Entities;
 
 namespace Reservation.Data
@@ -17,6 +18,6 @@ namespace Reservation.Data
         {
             dBContextOptionBuilder.UseSqlServer("server=.; database=helloappdb; integrated security=true;");
         }
-
+            
     }
 }

@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservation.Repository", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservation.Services", "Reservation.Services\Reservation.Services.csproj", "{251CD297-419B-4842-AA82-4035769014ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservation.Tests", "Reservation.Tests\Reservation.Tests.csproj", "{439E1983-A906-459F-BD6E-7F4205F990C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{8486EDDE-2154-4699-9673-1E0FAB4507D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{251CD297-419B-4842-AA82-4035769014ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{251CD297-419B-4842-AA82-4035769014ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{251CD297-419B-4842-AA82-4035769014ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{439E1983-A906-459F-BD6E-7F4205F990C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{439E1983-A906-459F-BD6E-7F4205F990C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{439E1983-A906-459F-BD6E-7F4205F990C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{439E1983-A906-459F-BD6E-7F4205F990C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8486EDDE-2154-4699-9673-1E0FAB4507D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8486EDDE-2154-4699-9673-1E0FAB4507D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8486EDDE-2154-4699-9673-1E0FAB4507D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8486EDDE-2154-4699-9673-1E0FAB4507D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

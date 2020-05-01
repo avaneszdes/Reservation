@@ -6,16 +6,12 @@ using System.Text;
 
 namespace Reservation.Services
 {
-    interface IClientService
+    public interface IClientService
     {
-        void Delete(int id);
-        public Client GetClient(int id);
-        void Create(Client client);
+        bool Delete(int id);
+        Client GetClient(int id);
+        int Create(Client client);
 
         IEnumerable<Client> GetAllClientIsBooking(DateTime date);
-
-
     }
-
-
 }

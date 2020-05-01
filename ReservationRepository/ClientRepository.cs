@@ -15,17 +15,25 @@ namespace Reservation.Repository
             _context = new ApplicationDbContext();
         }
 
-        public void Create(Client client)
+        public int Create(Client client)
         {
             _context.Clients.Add(client);
             _context.SaveChanges();
+            return client.Id;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             Client client = _context.Clients.Find(id);
-            if (client != null) { _context.Clients.Remove(client); }
-            _context.SaveChanges();
+            if (client != null)
+            {
+                _context.Clients.Remove(client);
+                _context.SaveChanges();
+                return true;
+            }
+
+            return false;
+
         }
 
         public IEnumerable<Client> GetAllClientIsBooking(DateTime date)

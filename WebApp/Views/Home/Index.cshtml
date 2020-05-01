@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+@{
+     Layout = null; 
+}
+
+@model List<Reservation.Entities.Client>;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    <title>Mysite</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">My Restourant</div>
+            <nav calss="nav">
+                @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
+                <a class="nav__link" href="">Войти от имени администратора </a>
+                @Html.ActionLink("Забронировать столик","Index" ,"Client")
+            </nav>    
+        </div>
+    </div>
+</header>
+<div class="intro">
+    <div class="container">
+        <div class="intro__inner">
+            <h1 class="intro__title">Welcome to DreaM</h1>
+        </div>>
+    </div>
+</div>
+</body>
+</html>

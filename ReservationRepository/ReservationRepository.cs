@@ -7,23 +7,30 @@ namespace Reservation.Repository
 {
     public class ReservationRepository : IReservationRepository
     {
-        private readonly ApplicationDbContext _dbContext;
+         readonly ApplicationDbContext _dbContext;
         public ReservationRepository()
         {
             _dbContext = new ApplicationDbContext();
         }
 
-        public void Create(Reserv reserv)
+        public int Create(Reserv reserv)
         {
             _dbContext.Reservs.Add(reserv);
             _dbContext.SaveChanges();
+            return reserv.Id;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
            Reserv reserv = _dbContext.Reservs.Find(id);
-            if(reserv != null) { _dbContext.Reservs.Remove(reserv); }
-            _dbContext.SaveChanges();
+           if (reserv != null)
+           {
+               _dbContext.Reservs.Remove(reserv);
+               _dbContext.SaveChanges();
+               return true;
+           }
+
+           return false;
         }
 
         public IEnumerable<Reserv> GetAllReservs()
