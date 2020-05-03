@@ -22,12 +22,13 @@ namespace Reservation.Repository
             return client.Id;
         }
 
-        public bool Delete(int id)
+        public bool Delete(Client client)
         {
-            Client client = _context.Clients.Find(id);
-            if (client != null)
+            Client tmp = _context.Clients.FirstOrDefault(x => x.Name == client.Name & x.SurName == client.SurName
+            & x.PhoneNumber == client.PhoneNumber);
+            if (tmp != null)
             {
-                _context.Clients.Remove(client);
+                _context.Clients.Remove(tmp);
                 _context.SaveChanges();
                 return true;
             }

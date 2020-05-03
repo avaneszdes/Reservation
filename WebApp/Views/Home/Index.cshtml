@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 
 @{
-     Layout = null; 
+    Layout = null;
 }
 
 @model List<Reservation.Entities.Client>;
@@ -16,7 +16,7 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
     <title>Mysite</title>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
 </head>
 
 <body>
@@ -26,9 +26,10 @@
             <div class="header__logo">My Restourant</div>
             <nav calss="nav">
                 @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
-                <a class="nav__link" href="">Войти от имени администратора </a>
-                @Html.ActionLink("Забронировать столик","Index" ,"Client")
-            </nav>    
+                @Html.ActionLink("Войти от имени администратора   ", "AdminLogining", "Client")
+                @Html.ActionLink("Забронировать столик  ", "Index", "Reservation")
+                @Html.ActionLink("Удалить бронь", "DeleteClient", "Client")
+            </nav>
         </div>
     </div>
 </header>

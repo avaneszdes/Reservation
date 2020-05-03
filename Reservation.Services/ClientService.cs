@@ -21,9 +21,9 @@ namespace Reservation.Services
             return client.Id;
         }
 
-        public bool Delete(int id)
+        public bool Delete(Client client)
         {
-            return _repository.Delete(id);
+            return _repository.Delete(client);
         }
 
         public Client GetClient(int id)

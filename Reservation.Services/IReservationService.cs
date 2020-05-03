@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Reservation.Services
 {
-    interface IReservationService
+     public interface IReservationService
     {
         IEnumerable<Reserv> CheckIfTimeIsAvailable(DateTime fromTime, DateTime toTime);
         bool Delete(int id);

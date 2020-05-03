@@ -35,10 +35,11 @@ namespace Reservation.Tests
         [TestMethod]
         public void Delete_Id_Deleting()
         {
+            var client = new Client() {Name = "vitya", Id = 1};
             var mock = new Mock<IClientRepository>();
-            mock.Setup(x => x.Delete(3)).Returns(true);
+            mock.Setup(x => x.Delete(client)).Returns(true);
             var service = new ClientService(mock.Object);
-            Assert.AreEqual(true, service.Delete(3));
+            Assert.AreEqual(true, service.Delete(client));
         }
 
         [TestMethod]

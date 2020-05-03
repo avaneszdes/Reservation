@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+@{
+    Layout = null;
+}
+
+
+@model Reservation.Entities.Client;
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    <title>Mysite</title>
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">My Restourant</div>
+        </div>
+    </div>
+</header>
+<div class="intro">
+    <div class="container">
+        <div class="intro__inner">
+            
+            @using (Html.BeginForm("Logining", "Client", FormMethod.Post))
+            {
+                <p>
+                    @Html.LabelFor(m => m.Name, "Логин")<br/>
+                    @Html.TextBoxFor(m => m.Name)
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.SurName, "Пароль")<br/>
+                    @Html.PasswordFor(m => m.SurName)
+                </p>
+                <p>
+                    <input type="submit" value="Войти"/>
+                </p>
+            }
+        </div>>
+    </div>
+</div>
+
+</body>
+</html>

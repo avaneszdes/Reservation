@@ -8,7 +8,7 @@ namespace Reservation.Services
 {
     public interface IClientService
     {
-        bool Delete(int id);
+        bool Delete(Client client);
         Client GetClient(int id);
         int Create(Client client);
 

@@ -10,7 +10,7 @@ namespace Reservation.Repository
         int Create(Client client);
         Client GetClient(int id);
         IEnumerable<Client> GetAllClientIsBooking(DateTime date);
-        bool Delete(int id);
+        bool Delete(Client client);
         void Update(Client client);
       
     }

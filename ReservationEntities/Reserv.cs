@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Reservation.Entities
 {
     public class Reserv : BaseEntity
     {
-        public DateTime ReservationDate { get; set; }
+       
+        [DataType(DataType.Date)]
+        public DateTime ReservationDate { get; set; } = DateTime.Now;
         public string ManagerName { get; set; }
         public Client Client { get; set; }
     }
