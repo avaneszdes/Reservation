@@ -24,29 +24,34 @@
     </div>
 </header>
 <div class="intro">
-    <div class="container">
-        <div class="intro__inner">
-            
-            @using (Html.BeginForm("Create", "Client", FormMethod.Post))
+   
+
+            @using (Html.BeginForm("Create", "Client", FormMethod.Post,new {style="margin-left: 800px;top: 100px;"}))
             {
                 <p>
-                    @Html.LabelFor(m => m.Name, "Имя")<br/>
-                    @Html.TextBoxFor(m => m.Name)
+                    <h1>
+                        @Html.LabelFor(m => m.Name, "Имя")<br/>
+                        @Html.TextBoxFor(m => m.Name)
+                    </h1>
                 </p>
                 <p>
-                    @Html.LabelFor(m => m.SurName, "Фамилия")<br/>
-                    @Html.TextBoxFor(m => m.SurName, "", new {type = "Фамилия"})
+                    <h1>
+                        @Html.LabelFor(m => m.SurName, "Фамилия")<br/>
+                        @Html.TextBoxFor(m => m.SurName, "", new {type = "Фамилия"})
+                    </h1>
                 </p>
                 <p>
-                    @Html.LabelFor(m => m.PhoneNumber, "Номер телефона")<br/>
-                    @Html.TextBoxFor(m => m.PhoneNumber)
+                    <h1>
+
+                        @Html.LabelFor(m => m.PhoneNumber, "Номер телефона")<br/>
+                        @Html.TextBoxFor(m => m.PhoneNumber)
+                    </h1>
                 </p>
                 <p>
                     <input type="submit" value="Отправить"/>
                 </p>
             }
-        </div>>
-    </div>
+     
 </div>
 
 </body>

@@ -50,8 +50,11 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Delete(Client client)
         {
-            _clientService.Delete(client);
-            return RedirectToAction("Success", "Home");
+            if (_clientService.Delete(client))
+            {
+                return RedirectToAction("Success", "Home");
+            }
+            return RedirectToAction("DeleteClient");
         }
         
         

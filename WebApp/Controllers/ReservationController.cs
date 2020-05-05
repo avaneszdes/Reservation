@@ -70,7 +70,7 @@ namespace WebApp.Controllers
             return View();
         }
         
-        [HttpGet]
+        [HttpPost]
         public IActionResult AllBookings(DateTime dateTime)
         {
             List<Reserv> reservs = _reservation.GetAllReservationsIsBooking(dateTime).ToList();
@@ -78,12 +78,12 @@ namespace WebApp.Controllers
             return View(reservs);
         }
         
-        [HttpDelete]
-        public IActionResult DeleteResrvation(int id)
+       
+        public IActionResult DeleteReservation(int id)
         {
             _reservation.Delete(id);
 
-            return View("AllBookings");
+            return RedirectToAction("Success", "Home");
         }
        
         public IActionResult ReservationHome()

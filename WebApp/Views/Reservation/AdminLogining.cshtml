@@ -24,25 +24,28 @@
     </div>
 </header>
 <div class="intro">
-    <div class="container">
-        <div class="intro__inner">
-            
-            @using (Html.BeginForm("Logining", "Reservation", FormMethod.Post,new {@class="bg" }))
-            {
-                <p>
-                    @Html.LabelFor(m => m.Name, "Логин")<br/>
-                    @Html.TextBoxFor(m => m.Name)
-                </p>
-                <p>
-                    @Html.LabelFor(m => m.SurName, "Пароль")<br/>
-                    @Html.PasswordFor(m => m.SurName)
-                </p>
-                <p>
-                    <input style="border-width: 3px" type="submit" value="Войти" class="nav__link"/>
-                </p>
-            }
-        </div>>
-    </div>
+
+    @using (Html.BeginForm("Logining", "Reservation", FormMethod.Post, new {style = "margin-left: 800px;top: 100px;"}))
+    {
+        <p>
+            <h1>
+                @Html.LabelFor(m => m.Name, "Логин", new {style = "color:white"})<br/>
+
+                @Html.TextBoxFor(m => m.Name)
+            </h1>
+        </p>
+        <p>
+            <h1>
+                @Html.LabelFor(m => m.SurName, "Пароль", new {style = "color:white"})<br/>
+                @Html.PasswordFor(m => m.SurName)
+            </h1>
+        </p>
+        <p>
+            <input style="border-width: 3px" type="submit" value="Войти" class="nav__link"/>
+        </p>
+    }
+
+
 </div>
 
 </body>

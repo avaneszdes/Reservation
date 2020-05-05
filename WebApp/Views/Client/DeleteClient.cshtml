@@ -16,23 +16,36 @@
 </head>
 
 <body>
-<div class="tablee" >
-             @using (Html.BeginForm("Delete", "Client", FormMethod.Post, new {@class =  "bg" }))
+<div class="intro">
+             @using (Html.BeginForm("Delete", "Client", FormMethod.Post, new {style="margin-left: 800px;top: 100px;"}))
                 {
                     <p>
-                        @Html.LabelFor(m => m.Name, "Имя" )<br/>
+                        <h1>
+                        @Html.LabelFor(m => m.Name, "Имя",new {style = "color:white"})<br/>
                         @Html.TextBoxFor(m => m.Name)
+                        </h1>
                     </p>
                     <p>
-                        @Html.LabelFor(m => m.SurName, "Фамилия")<br/>
+                    <h1>
+                        @Html.LabelFor(m => m.SurName, "Фамилия",new {style = "color:white"})<br/>
                         @Html.TextBoxFor(m => m.SurName, "", new {type = "Фамилия"})
+                        </h1>
                     </p>
                     <p>
-                        @Html.LabelFor(m => m.PhoneNumber, "Номер телефона")<br/>
-                        @Html.TextBoxFor(m => m.PhoneNumber)
+                        <h1>
+                            @Html.LabelFor(m => m.PhoneNumber, "Номер телефона",new {style = "color:white"})<br/>
+                            @Html.TextBoxFor(m => m.PhoneNumber)
+                        </h1>
                     </p>
                     <p>
-                        <input style="margin: 10px;border-color: black;border-width: 3px; " type="submit" value="Удалить" class="nav__link"/>
+                        <h1>
+                            @Html.LabelFor(m => m.PhoneNumber, "Личный номер",new {style = "color:white"})<br/>
+                            @Html.TextBoxFor(m => m.Id)
+                        </h1>
+                    </p>
+                    
+                    <p>
+                        <input  type="submit" value="Удалить" class="nav__link"/>
                     </p>
                 }
         </div>

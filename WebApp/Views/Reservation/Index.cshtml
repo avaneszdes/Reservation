@@ -5,6 +5,7 @@
 }
 
 
+@using System.Net.Mime
 @model WebApp.ViewModel.ClientReservationViewModel;
 <html>
 
@@ -23,24 +24,32 @@
         </div>
     </div>
 </header>
-<div class="tablee">
-    @using (Html.BeginForm("GetReservation", "Reservation", FormMethod.Post, new {@class = "bg"}))
+<div class="intro">
+    @using (Html.BeginForm("GetReservation", "Reservation", FormMethod.Post, new {style="margin-left: 800px;top: 100px;"}))
     {
         <p>
-            @Html.LabelFor(m => m, "Дата")<br/>
+            <h1>
+            @Html.LabelFor(m => m, "Дата", new {style = "color:white"})<br/>
             @Html.TextBoxFor(model => model.CreateDateTime, new {type = "datetime-local"})
+            </h1>
         </p>
         <p>
-            @Html.LabelFor(m => m.Name, "Имя")<br/>
+        <h1>
+            @Html.LabelFor(m => m.Name, "Имя",new{style="color:white"})<br/>
             @Html.TextBoxFor(m => m.Name)
+            </h1>
         </p>
         <p>
-            @Html.LabelFor(m => m.Surname, "Фамилия")<br/>
+        <h1>
+            @Html.LabelFor(m => m.Surname, "Фамилия",new{style="color:white"})<br/>
             @Html.TextBoxFor(m => m.Surname)
+            </h1>
         </p>
         <p>
-            @Html.LabelFor(m => m.PhoneNumber, "Номер телефона")<br/>
+        <h1>
+            @Html.LabelFor(m => m.PhoneNumber, "Номер телефона",new{style="color:white"})<br/>
             @Html.TextBoxFor(m => m.PhoneNumber, new {type = "phonenNumber"})
+            </h1>
         </p>
         <p>
             <input  style="margin: 10px;border-color: black;border-width: 3px;"  type="submit" value="Забронировать"  class="nav__link"/>

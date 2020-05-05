@@ -25,10 +25,14 @@ namespace Reservation.Repository
         public bool Delete(Client client)
         {
             Client tmp = _context.Clients.FirstOrDefault(x => x.Name == client.Name & x.SurName == client.SurName
-            & x.PhoneNumber == client.PhoneNumber);
+            & x.PhoneNumber == client.PhoneNumber & x.Id == client.Id);
+            
+            
             if (tmp != null)
             {
+                Reserv reserv = _context.Reservs.Find(tmp.Id);
                 _context.Clients.Remove(tmp);
+                _context.Reservs.Remove(reserv);
                 _context.SaveChanges();
                 return true;
             }
