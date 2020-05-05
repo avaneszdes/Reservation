@@ -63,7 +63,7 @@ namespace Reservation.Tests.Intagration.Tests
             List<Client> list = new List<Client>(){client};
             
             var service = new ClientService(new ClientRepository());
-            Assert.IsTrue(list == service.GetAllClientIsBooking(DateTime.Now));
+            Assert.IsTrue(list == service.CheckIfTimeIsAvailable(DateTime.Now , DateTime.Today));
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Reservation.Entities
     {
        
         [DataType(DataType.Date)]
-        public DateTime ReservationDate { get; set; } = DateTime.Now;
+        public DateTime ReservationDate { get; set; }
         public string ManagerName { get; set; }
         public Client Client { get; set; }
     }

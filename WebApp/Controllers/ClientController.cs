@@ -55,20 +55,6 @@ namespace WebApp.Controllers
         }
         
         
-        [HttpGet]
-        public IActionResult AdminLogining()
-        {
-            return View();
-        }
-        
-        [HttpPost]
-        public IActionResult Logining(Client client)
-        {
-            if(client.Name == "Vlad" & client.SurName == "12345")
-                return RedirectToAction("Success", "Home");
-
-            return RedirectToAction("AdminLogining");
-        }
        
     }
 }

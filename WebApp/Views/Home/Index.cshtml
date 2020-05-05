@@ -26,9 +26,9 @@
             <div class="header__logo">My Restourant</div>
             <nav calss="nav">
                 @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
-                @Html.ActionLink("Войти от имени администратора   ", "AdminLogining", "Client")
-                @Html.ActionLink("Забронировать столик  ", "Index", "Reservation")
-                @Html.ActionLink("Удалить бронь", "DeleteClient", "Client")
+                @Html.ActionLink("Войти от имени администратора   ", "AdminLogining", "Reservation" ,null, new { @class ="nav__link"})
+                @Html.ActionLink("Забронировать столик  ", "Index", "Reservation" ,null, new { @class ="nav__link"})
+                @Html.ActionLink("Удалить бронь", "DeleteClient", "Client" ,null, new { @class ="nav__link"})
             </nav>
         </div>
     </div>

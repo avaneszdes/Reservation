@@ -7,7 +7,8 @@ namespace Reservation.Services
 {
      public interface IReservationService
     {
-        IEnumerable<Reserv> CheckIfTimeIsAvailable(DateTime fromTime, DateTime toTime);
+        IEnumerable<Reserv> GetAllReservationsIsBooking(DateTime date);
+        
         bool Delete(int id);
         Reserv GetReserv(int id);
         int Create(Reserv reserv);

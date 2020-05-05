@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Reservation.Entities;
 using Reservation.Services;
 using WebApp.Models;
+using WebApp.ViewModel;
 
 namespace WebApp.Controllers
 {
@@ -15,18 +16,18 @@ namespace WebApp.Controllers
     {
         private readonly ILogger<ReservationController> _logger;
         private readonly IReservationService _reservation ;
-        public ReservationController(ILogger<ReservationController> logger,IReservationService reservationService )
+        private readonly IClientService _clientService;
+        public ReservationController(ILogger<ReservationController> logger,IReservationService reservationService,IClientService clientService )
         {
             _reservation = reservationService;
             _logger = logger;
+            _clientService = clientService;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-
-
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -36,10 +37,59 @@ namespace WebApp.Controllers
         
         
         [HttpPost]
-        public IActionResult GetReservation(Reserv reservation)
+        public IActionResult GetReservation(ClientReservationViewModel clientReservationViewModel)
         {
-            _reservation.Create(reservation);
+            Reserv reserv = new Reserv();
+            reserv.Client = new Client();
+            reserv.ReservationDate = clientReservationViewModel.CreateDateTime;
+            reserv.Client.Name = clientReservationViewModel.Name;
+            reserv.Client.SurName = clientReservationViewModel.Surname;
+            reserv.Client.PhoneNumber = clientReservationViewModel.PhoneNumber;
+            _reservation.Create(reserv);
             return RedirectToAction("Success", "Home");
         }
+        
+        [HttpGet]
+        public IActionResult AdminLogining()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult Logining(Client client)
+        {
+            if(client.Name == "Vlad" & client.SurName == "12345")
+                return RedirectToAction("AllBookings", "Reservation");
+
+            return RedirectToAction("AdminLogining");
+        }
+        
+        [HttpGet]
+        public IActionResult AllBookings()
+        {
+            return View();
+        }
+        
+        [HttpGet]
+        public IActionResult AllBookings(DateTime dateTime)
+        {
+            List<Reserv> reservs = _reservation.GetAllReservationsIsBooking(dateTime).ToList();
+           
+            return View(reservs);
+        }
+        
+        [HttpDelete]
+        public IActionResult DeleteResrvation(int id)
+        {
+            _reservation.Delete(id);
+
+            return View("AllBookings");
+        }
+       
+        public IActionResult ReservationHome()
+        {
+            return View();
+        }
+
     }
 }

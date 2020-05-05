@@ -31,9 +31,10 @@ namespace Reservation.Services
             return _repository.GetClient(id);
         }
 
-        public IEnumerable<Client> GetAllClientIsBooking(DateTime date)
+        public IEnumerable<Client> CheckIfTimeIsAvailable(DateTime fromTime, DateTime toTime)
         {
-           return  _repository.GetAllClientIsBooking(date);
+            return _repository.GetAllClients().Where(x => x.CreateDate < fromTime && x.CreateDate > toTime);
         }
+       
     }
 }

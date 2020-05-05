@@ -5,7 +5,7 @@
 }
 
 
-@model Reservation.Entities.Reserv;
+@model WebApp.ViewModel.ClientReservationViewModel;
 <html>
 
 <head>
@@ -23,22 +23,29 @@
         </div>
     </div>
 </header>
-<div class="intro">
-    <div class="container">
-        <div class="intro__inner">
-
-            @using (Html.BeginForm("GetReservation", "Reservation", FormMethod.Post))
-            {
-                <p>
-                    @Html.LabelFor(m => m, "Дата")<br/>
-                    @Html.TextBoxFor(model => model.ReservationDate, "{0:dd/MM/yyyy}")
-                </p>
-                <p>
-                    <input type="submit" value="asdsadas"/>
-                </p>
-            }
-        </div>>
-    </div>
+<div class="tablee">
+    @using (Html.BeginForm("GetReservation", "Reservation", FormMethod.Post, new {@class = "bg"}))
+    {
+        <p>
+            @Html.LabelFor(m => m, "Дата")<br/>
+            @Html.TextBoxFor(model => model.CreateDateTime, new {type = "datetime-local"})
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Name, "Имя")<br/>
+            @Html.TextBoxFor(m => m.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Surname, "Фамилия")<br/>
+            @Html.TextBoxFor(m => m.Surname)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.PhoneNumber, "Номер телефона")<br/>
+            @Html.TextBoxFor(m => m.PhoneNumber, new {type = "phonenNumber"})
+        </p>
+        <p>
+            <input  style="margin: 10px;border-color: black;border-width: 3px;"  type="submit" value="Забронировать"  class="nav__link"/>
+        </p>
+    }
 </div>
 
 </body>

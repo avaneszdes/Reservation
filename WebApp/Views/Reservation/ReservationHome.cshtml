@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+@{
+    Layout = null;
+}
+
+@model List<Reservation.Entities.Reserv>;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    <title>Mysite</title>
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+
+<body>
+<header class="header">
+    <div class="container">
+         <div class="intro__inner">
+            @Html.ActionLink("Получить все брони по дате", "AdminLogining", "Reservation", null, new {@class = "nav__link"})
+            @Html.ActionLink("Удалить бронь", "DeleteClient", "Client", null, new {@class = "nav__link"})
+        </div>
+    </div>
+</header>
+<div class="intro">
+    <div class="container">
+        <div class="intro__inner">
+        </div>>
+    </div>
+</div>
+</body>
+</html>

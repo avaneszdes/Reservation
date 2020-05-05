@@ -12,6 +12,6 @@ namespace Reservation.Services
         Client GetClient(int id);
         int Create(Client client);
 
-        IEnumerable<Client> GetAllClientIsBooking(DateTime date);
+        IEnumerable<Client> CheckIfTimeIsAvailable(DateTime fromTime, DateTime toTime);
     }
 }

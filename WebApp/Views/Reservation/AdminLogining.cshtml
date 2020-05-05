@@ -27,7 +27,7 @@
     <div class="container">
         <div class="intro__inner">
             
-            @using (Html.BeginForm("Logining", "Client", FormMethod.Post))
+            @using (Html.BeginForm("Logining", "Reservation", FormMethod.Post,new {@class="bg" }))
             {
                 <p>
                     @Html.LabelFor(m => m.Name, "Логин")<br/>
@@ -38,7 +38,7 @@
                     @Html.PasswordFor(m => m.SurName)
                 </p>
                 <p>
-                    <input type="submit" value="Войти"/>
+                    <input style="border-width: 3px" type="submit" value="Войти" class="nav__link"/>
                 </p>
             }
         </div>>

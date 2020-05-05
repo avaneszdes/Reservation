@@ -16,10 +16,7 @@ namespace Reservation.Services
         }
 
     
-        public IEnumerable<Reserv> CheckIfTimeIsAvailable(DateTime fromTime, DateTime toTime)
-        {
-            return reservation.GetAllReservs().Where(x => x.CreateDate < fromTime && x.CreateDate > toTime);
-        }
+       
 
         public int Create(Reserv reserv)
         {
@@ -27,6 +24,11 @@ namespace Reservation.Services
             return reserv.Id;
         }
 
+        public IEnumerable<Reserv> GetAllReservationsIsBooking(DateTime date)
+        {
+            return  reservation.GetAllReservationstIsBooking(date);
+        }
+       
         public bool Delete(int id)
         {
             return reservation.Delete(id);

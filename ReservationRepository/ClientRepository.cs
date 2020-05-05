@@ -37,11 +37,10 @@ namespace Reservation.Repository
 
         }
 
-        public IEnumerable<Client> GetAllClientIsBooking(DateTime date)
+        public IEnumerable<Client> GetAllClients()
         {
-            return _context.Clients.Where(x => x.CreateDate == date);
+            return _context.Clients;
         }
-
 
         public Client GetClient(int id)
         {

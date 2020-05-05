@@ -2,6 +2,8 @@
 using Reservation.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Reservation.Repository
 {
@@ -33,10 +35,12 @@ namespace Reservation.Repository
            return false;
         }
 
-        public IEnumerable<Reserv> GetAllReservs()
+        public IEnumerable<Reserv> GetAllReservationstIsBooking(DateTime date)
         {
-            return _dbContext.Reservs;
+            return _dbContext.Reservs.Where(x => x.ReservationDate == date).Include(c => c.Client);
         }
+
+       
 
         public Reserv GetReserv(int id)
         {

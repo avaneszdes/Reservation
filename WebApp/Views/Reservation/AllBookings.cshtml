@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+@{
+    Layout = null;
+}
+@using Reservation.Entities
+@model List<Reservation.Entities.Reserv>;
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    <title>Mysite</title>
+    <link rel="stylesheet" href="~/css/site.css"/>
+
+</head>
+
+<body>
+<div class="tablee">
+    <div style="left: 10px;  position: absolute">
+        <p>
+            <label type="text" style="color: aliceblue">Введите Id чтобы удалить бронь</label><br>
+            <input type="number" name="dateTime"/>
+        </p>
+        <p>
+            <input style="margin: 10px; background: transparent; font-weight: bold" type="submit" value="Удалить" class="nav__link"/>
+        </p>
+    </div>
+    @using (Html.BeginForm("DeleteResrvation", "Reservation", FormMethod.Get))
+    {
+        <p>
+            <label type="text" style="color: aliceblue">Введите дату чтобы получить все брони</label><br>
+            <input type="datetime-local" name="dateTime"/>
+        </p>
+        <p>
+            <input style="margin: 10px; background: transparent; font-weight: bold" type="submit" value="Вывести всех" class="nav__link"/>
+        </p>
+    }
+    <div class="tablee2">
+
+        <table width="600px" border="3px" bgcolor="white">
+            <caption style="color: black; height: 100%; border-width: 3px; background:white; ">Все брони</caption>
+            <tr >
+                <th>id</th><th>Фамилия</th><th>Имя</th><th>Номер телефона</th><th>Дата бронирования</th>
+            </tr>
+
+
+            @foreach (var person in Model ?? new List<Reserv>())
+            {
+                <td>@person.Client.Id </td>
+                <td>@person.Client.SurName </td>
+                <td>@person.Client.Name </td>
+                <td>@person.Client.PhoneNumber </td>
+                <td>@person.ReservationDate </td>
+            }
+        </table>
+
+    </div>
+</div>
+
+
+</body>
+</html>
