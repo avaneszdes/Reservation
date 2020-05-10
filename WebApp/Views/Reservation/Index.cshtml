@@ -3,9 +3,8 @@
 @{
     Layout = null;
 }
-
-
-@using System.Net.Mime
+@using System.Web.Optimization
+@using Reservation.Services
 @model WebApp.ViewModel.ClientReservationViewModel;
 <html>
 
@@ -14,47 +13,93 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
     <title>Mysite</title>
     <link rel="stylesheet" href="~/css/site.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+        function checkAvailability (){
+           
+            var fromDate = document.getElementById("fromDate").value;
+            var toDate = document.getElementById("toDate").value;
+            $.ajax({url: `/Reservation/CheckIfDateIsAvailable?from=${fromDate}&to=${toDate}`, success: function(result){
+                $('#results').text(result === true ? 'Это время свободно' : 'Это время занято');
+            }});
+            
+            
+        }
+    
+      
+     </script>
+
+    @* <script type="text/javascript"> *@
+    @*       *@
+    @*          function reservation (){ *@
+    @*              *@
+    @*              var fromDate = document.getElementById("fromDate").value; *@
+    @*              var toDate = document.getElementById("toDate").value; *@
+    @*               var fromDate = document.getElementById("fromDate").value; *@
+    @*                               var toDate = document.getElementById("toDate").value; *@
+    @*                                var fromDate = document.getElementById("fromDate").value; *@
+    @*              $.ajax({url: `/Reservation/Resrvation?from=${fromDate}&to=${toDate}`, success: function(result){ *@
+    @*                  $('#results').text(result === true ? 'Это время свободно' : 'Это время занято'); *@
+    @*              }}); *@
+    @*               *@
+    @*               *@
+    @*          } *@
+    @*       *@
+    @*         *@
+    @*       </script> *@
+    
+   
 </head>
 
 <body>
-<header class="header">
-    <div class="container">
-        <div class="header__inner">
-            <div class="header__logo">My Restourant</div>
-        </div>
-    </div>
-</header>
+
 <div class="intro">
-    @using (Html.BeginForm("GetReservation", "Reservation", FormMethod.Post, new {style="margin-left: 800px;top: 100px;"}))
+    @using (Html.BeginForm("Reservation", "Reservation", FormMethod.Post))
     {
-        <p>
-            <h1>
-            @Html.LabelFor(m => m, "Дата", new {style = "color:white"})<br/>
-            @Html.TextBoxFor(model => model.CreateDateTime, new {type = "datetime-local"})
-            </h1>
-        </p>
-        <p>
-        <h1>
-            @Html.LabelFor(m => m.Name, "Имя",new{style="color:white"})<br/>
-            @Html.TextBoxFor(m => m.Name)
-            </h1>
-        </p>
-        <p>
-        <h1>
-            @Html.LabelFor(m => m.Surname, "Фамилия",new{style="color:white"})<br/>
-            @Html.TextBoxFor(m => m.Surname)
-            </h1>
-        </p>
-        <p>
-        <h1>
-            @Html.LabelFor(m => m.PhoneNumber, "Номер телефона",new{style="color:white"})<br/>
-            @Html.TextBoxFor(m => m.PhoneNumber, new {type = "phonenNumber"})
-            </h1>
-        </p>
-        <p>
-            <input  style="margin: 10px;border-color: black;border-width: 3px;"  type="submit" value="Забронировать"  class="nav__link"/>
-        </p>
+        <div style="height: 400px; width: 250px; padding-left: 15px; background-color: white;border-radius: 10px;margin-left: 900px;top: 200px;position: absolute;  ">
+            <header>Введите данные для брони</header>
+            <h4>
+                <p>
+                    @Html.LabelFor(m => m, "Бронь с", new {style = "color:black"})<br/>
+                    @Html.TextBoxFor(model => model.FromReservationDate, new {type = "datetime-local"})
+                </p>
+
+                <p>
+                    @Html.LabelFor(m => m, "Бронь до", new {style = "color:black"})<br/>
+                    @Html.TextBoxFor(model => model.ToReservationDate, new {type = "datetime-local"})
+                </p>
+
+                <p>
+                    @Html.LabelFor(m => m.Name, "Имя", new {style = "color:black"})<br/>
+                    @Html.TextBoxFor(m => m.Name)
+                </p>
+
+                <p>
+                    @Html.LabelFor(m => m.Surname, "Фамилия", new {style = "color:black"})<br/>
+                    @Html.TextBoxFor(m => m.Surname)
+                </p>
+
+                <p>
+                    @Html.LabelFor(m => m.PhoneNumber, "Номер телефона", new {style = "color:black"})<br/>
+                    @Html.TextBoxFor(m => m.PhoneNumber, new {type = "phonenNumber"})
+                </p>
+
+                <p>
+                    <input style=" background: transparent; font-weight: bold" type="submit" value="Забронировать" class="nav__link"/>
+                </p>
+            </h4>
+        </div>
     }
+    <div style="padding-left: 50px">
+        <input type="datetime-local" name="С" id="fromDate" /><br>
+        <input type="datetime-local" name="До" id="toDate"/><br>
+        <input type="submit" value="Поиск" onclick="checkAvailability()"/>
+     <div id="results"></div>
+    </div>
+
+
+
 </div>
 
 </body>

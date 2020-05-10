@@ -142,6 +142,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .succsessPage {
+   
     font-family: 'Montserrat', sans-serif;
     font-size: 120px;
     margin-left: 650px;
@@ -149,8 +150,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tablee {
+    
     display: flex;
     position: absolute;
+    padding-top: 100px;
     padding-left: 550px;
     width: 100%;
     height: 100vh;
@@ -159,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .tablee2 {
     position: static;
-    padding-top: 20px;
+    padding-top: 14px;
     padding-left: 40px;
 }
 

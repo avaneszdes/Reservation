@@ -26,8 +26,6 @@ namespace Reservation.Repository
         {
             Client tmp = _context.Clients.FirstOrDefault(x => x.Name == client.Name & x.SurName == client.SurName
             & x.PhoneNumber == client.PhoneNumber & x.Id == client.Id);
-            
-            
             if (tmp != null)
             {
                 Reserv reserv = _context.Reservs.Find(tmp.Id);

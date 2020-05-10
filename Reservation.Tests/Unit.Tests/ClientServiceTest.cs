@@ -42,16 +42,6 @@ namespace Reservation.Tests
             Assert.AreEqual(true, service.Delete(client));
         }
 
-        [TestMethod]
-        public void GetAllClientIsBooking_Date_Clients()
-        {
-            var mock = new Mock<IClientRepository>();
-            var client = new Client() {Name = "vitya ak"};
-            var client2 = new Client() {Name = "vitya ak 47"};
-            var list = new List<Client>() {client, client2};
-            mock.Setup(x => x.GetAllClients()).Returns(list);
-            var service = new ClientService(mock.Object);
-            Assert.IsTrue(list == service.CheckIfTimeIsAvailable(DateTime.Now , DateTime.Today));
-        }
+       
     }
 }

@@ -44,7 +44,6 @@ namespace Reservation.Tests.Intagration.Tests
         [TestMethod]
         public void Delete_Id_Deleting()
         {
-            var clientRepository = new ClientRepository();
             var client = new Client()
                 {Name = "123", CreateDate = DateTime.Now, PhoneNumber = "22222", SurName = "ava"};
 
@@ -54,16 +53,6 @@ namespace Reservation.Tests.Intagration.Tests
            
         }
 
-        [TestMethod]
-        public void GetAllClientIsBooking_Date_Clients()
-        {
-           
-            var client = new Client()  {Name = "123", CreateDate = DateTime.Now, PhoneNumber = "22222", SurName = "ava"};
-            
-            List<Client> list = new List<Client>(){client};
-            
-            var service = new ClientService(new ClientRepository());
-            Assert.IsTrue(list == service.CheckIfTimeIsAvailable(DateTime.Now , DateTime.Today));
-        }
+      
     }
 }

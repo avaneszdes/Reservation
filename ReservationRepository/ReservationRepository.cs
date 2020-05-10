@@ -3,6 +3,8 @@ using Reservation.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.EntityFrameworkCore;
 
 namespace Reservation.Repository
@@ -37,10 +39,14 @@ namespace Reservation.Repository
 
         public IEnumerable<Reserv> GetAllReservationstIsBooking(DateTime date)
         {
-            return _dbContext.Reservs.Where(x => x.ReservationDate == date).Include(c => c.Client);
+            return _dbContext.Reservs.Where(x => x.FromReservationDate.Day == date.Day).Include(c => c.Client);
         }
 
-       
+
+        public IEnumerable<Reserv> GetAllReservations()
+        {
+            return _dbContext.Reservs;
+        }
 
         public Reserv GetReserv(int id)
         {

@@ -20,31 +20,38 @@
 
     @using (Html.BeginForm("AllBookings", "Reservation", FormMethod.Post))
     {
-        <p>
-            <label type="text" style="color: aliceblue">Введите дату чтобы получить все брони</label><br>
-            <input type="datetime-local" name="dateTime"/>
-        </p>
-        <p>
-            <input style="margin: 10px; background: transparent; font-weight: bold" type="submit" value="Вывести всех" class="nav__link"/>
-        </p>
+        <div style="height: 130px; width: 250px;padding-right: 2px; padding-left: 15px; background-color: white;border-radius: 10px;  ">
+            <p>
+                <label type="text" style="color: black">Введите дату чтобы получить все брони за день</label><br>
+                <input type="date" name="dateTime"/>
+            </p>
+            <p>
+                <input style="margin: 10px; background: transparent; font-weight: bold" type="submit"   value="Вывести всех" class="nav__link"/>
+            </p>
+        </div>
     }
     <div class="tablee2">
 
-        <table width="600px" border="3px" bgcolor="white">
+        <table  border="3px" bgcolor="white" style="height: auto; max-height: 700px; min-height: 130px; width:100%; display: block;overflow-y: scroll;max-width: 100%;">
+
             <caption style="color: black; height: 100%; border-width: 3px; background:white; ">Все брони</caption>
-            <tr >
-                <th>id</th><th>Фамилия</th><th>Имя</th><th>Номер телефона</th><th>Дата бронирования</th><th> </th>
+            <tr style="width: 800px">
+                <th  width="5px">id</th><th  width="150px">Фамилия</th>
+                <th width="150px">Имя</th><th  width="150px">Номер телефона</th>
+                <th  width="200px">Бронь с </th><th  width="200px">Бронь до </th><th width="75px"> </th>
             </tr>
 
 
             @foreach (var person in Model ?? new List<Reserv>())
             {
-                <td>@person.Client.Id </td>
-                <td>@person.Client.SurName </td>
-                <td>@person.Client.Name </td>
-                <td>@person.Client.PhoneNumber </td>
-                <td>@person.ReservationDate </td>
-                <td>@Html.ActionLink("Удалить","DeleteReservation","Reservation",new { @person.Id }, null)</td>
+                <td style="padding-left: 4px">@person.Client.Id </td>
+                <td style="padding-left: 4px">@person.Client.SurName </td>
+                <td style="padding-left: 4px">@person.Client.Name </td>
+                <td style="padding-left: 4px">@person.Client.PhoneNumber </td>
+                <td style="padding-left: 4px">@person.FromReservationDate </td>
+                <td style="padding-left: 4px">@person.ToReservationDate </td>
+                <td style="padding-left: 4px">@Html.ActionLink("Удалить", "DeleteReservation", "Reservation", new {@person.Id}, null)</td>
+                <tr></tr>
             }
         </table>
 

@@ -9,6 +9,7 @@ namespace Reservation.Repository
     {
        
         IEnumerable<Reserv> GetAllReservationstIsBooking(DateTime date);
+        IEnumerable<Reserv> GetAllReservations();
         int Create(Reserv reserv);
         Reserv GetReserv(int id);
         bool Delete(int id);

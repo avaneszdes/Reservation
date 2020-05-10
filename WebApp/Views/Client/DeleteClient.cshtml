@@ -19,34 +19,36 @@
 <div class="intro">
              @using (Html.BeginForm("Delete", "Client", FormMethod.Post, new {style="margin-left: 800px;top: 100px;"}))
                 {
+                    <div style="height: 300px; width: 200px; padding-left: 15px; background-color: white;border-radius: 10px; ">
                     <p>
-                        <h1>
-                        @Html.LabelFor(m => m.Name, "Имя",new {style = "color:white"})<br/>
+                        <h4>
+                        @Html.LabelFor(m => m.SurName, "Имя",new {style = "color:black"})<br/>
                         @Html.TextBoxFor(m => m.Name)
-                        </h1>
+                        </h4>
                     </p>
                     <p>
-                    <h1>
-                        @Html.LabelFor(m => m.SurName, "Фамилия",new {style = "color:white"})<br/>
+                        <h4>
+                        @Html.LabelFor(m => m.Name, "Фамилия",new {style = "color:black"})<br/>
                         @Html.TextBoxFor(m => m.SurName, "", new {type = "Фамилия"})
-                        </h1>
+                        </h4>
                     </p>
                     <p>
-                        <h1>
-                            @Html.LabelFor(m => m.PhoneNumber, "Номер телефона",new {style = "color:white"})<br/>
+                        <h4>
+                            @Html.LabelFor(m => m.PhoneNumber, "Номер телефона",new {style = "color:black"})<br/>
                             @Html.TextBoxFor(m => m.PhoneNumber)
-                        </h1>
+                        </h4>
                     </p>
                     <p>
-                        <h1>
-                            @Html.LabelFor(m => m.PhoneNumber, "Личный номер",new {style = "color:white"})<br/>
+                        <h4>
+                            @Html.LabelFor(m => m.Id, "Личный номер(Id)",new {style = "color:black"})<br/>
                             @Html.TextBoxFor(m => m.Id)
-                        </h1>
+                        </h4>
                     </p>
                     
-                    <p>
-                        <input  type="submit" value="Удалить" class="nav__link"/>
-                    </p>
+                        <p>
+                            <input  type="submit" value="Удалить" class="nav__link"/>
+                        </p>
+                        </div>
                 }
         </div>
 

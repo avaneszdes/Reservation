@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Reservation.Entities;
 using Reservation.Repository;
@@ -13,7 +15,7 @@ namespace Reservation.Tests
         public void GetReservation_Id_Reservation()
         {
             var mock = new Mock<IReservationRepository>();
-            var reserv = new Reserv() {ManagerName = "Leva"};
+            var reserv = new Reserv() {FromReservationDate = DateTime.Today};
             mock.Setup(repo => repo.GetReserv(It.IsAny<int>())).Returns(reserv);
             var service = new ReservationService(mock.Object);
             Assert.IsTrue(reserv == service.GetReserv(22));
@@ -37,6 +39,18 @@ namespace Reservation.Tests
             mock.Setup(repo => repo.Delete(2)).Returns(true);
             var service = new ReservationService(mock.Object);
             Assert.IsTrue(true == service.Delete(2));
+        }
+        
+         [TestMethod]
+        public void GetAllResrvs_Date_Reservs()
+        {
+            var mock = new Mock<IReservationRepository>();
+            var reesrv = new Reserv() {FromReservationDate = DateTime.Now};
+            var reesrv2 = new Reserv() {FromReservationDate = DateTime.Now};
+            var list = new List<Reserv>() {reesrv, reesrv2};
+            mock.Setup(x => x.GetAllReservations()).Returns(list);
+            var service = new ReservationService(mock.Object);
+            Assert.IsTrue(list.Contains(reesrv) == service.CheckIfTimeIsAvailablee(DateTime.Now , DateTime.Today));
         }
     }
 }

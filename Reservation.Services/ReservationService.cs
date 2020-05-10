@@ -28,7 +28,11 @@ namespace Reservation.Services
         {
             return  reservation.GetAllReservationstIsBooking(date);
         }
-       
+        public bool CheckIfTimeIsAvailablee(DateTime fromTime, DateTime toTime)
+        {
+            var a = reservation.GetAllReservations().Any(x => fromTime >= x.FromReservationDate   && toTime <= x.ToReservationDate  );
+            return !a;
+        }
         public bool Delete(int id)
         {
             return reservation.Delete(id);

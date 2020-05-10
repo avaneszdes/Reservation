@@ -52,7 +52,7 @@ namespace WebApp.Controllers
         {
             if (_clientService.Delete(client))
             {
-                return RedirectToAction("Success", "Home");
+                return RedirectToAction("Success","Home" );
             }
             return RedirectToAction("DeleteClient");
         }

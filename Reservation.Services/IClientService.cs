@@ -11,7 +11,5 @@ namespace Reservation.Services
         bool Delete(Client client);
         Client GetClient(int id);
         int Create(Client client);
-
-        IEnumerable<Client> CheckIfTimeIsAvailable(DateTime fromTime, DateTime toTime);
     }
 }
