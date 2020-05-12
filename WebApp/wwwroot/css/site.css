@@ -94,10 +94,9 @@ h1, h2, h3, h4, h5, h6 {
 
     position: relative;
 
-    color: #f8f4f4;
+    color: #090303;
     text-decoration: none;
 
-    /* pri navedenii menyayetsya svet */
     transition: color .2s linear;
 }
 

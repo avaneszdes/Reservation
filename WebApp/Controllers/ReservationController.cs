@@ -80,20 +80,18 @@ namespace WebApp.Controllers
             return View();
         }
         
-        [HttpGet]
+        [HttpPost]
         public IActionResult AllBookings(DateTime dateTime)
         {
             List<Reserv> reservs = _reservation.GetAllReservationsIsBooking(dateTime).ToList();
            
             return View(reservs);
         }
-        
-       
-        public IActionResult DeleteReservation(int id)
-        {
-            _reservation.Delete(id);
 
-            return RedirectToAction("Success", "Home");
+        
+        public IActionResult DeleteReservation([FromQuery]int id)
+        {
+           return Ok(_reservation.Delete(id));
         }
 
        

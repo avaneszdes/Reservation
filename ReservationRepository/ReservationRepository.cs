@@ -27,9 +27,11 @@ namespace Reservation.Repository
         public bool Delete(int id)
         {
            Reserv reserv = _dbContext.Reservs.Find(id);
+           Client client = _dbContext.Clients.Find(id);
            if (reserv != null)
            {
                _dbContext.Reservs.Remove(reserv);
+               _dbContext.Clients.Remove(client);
                _dbContext.SaveChanges();
                return true;
            }
