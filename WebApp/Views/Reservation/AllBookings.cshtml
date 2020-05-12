@@ -32,7 +32,7 @@
 <header class="header">
     <div class="container">
         <div class="header__inner">
-            <div class="header__logo">
+            <div class="header__logo" title="На главную">
                 @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
                 @Html.ActionLink("My Restourant", "Index", "Home", null, new {@class = "nav__link"})
             </div>
@@ -49,7 +49,7 @@
                 <input type="date" name="dateTime"/>
             </p>
             <p>
-                <input style="margin: 10px; font-weight: bold" type="submit" value="Вывести всех" class="nav__link"/>
+                <input style="margin: 10px;background-color: #98fff0; font-weight: bold;border-color: #98fff0" type="submit" value="Вывести всех" class="nav__link"/>
             </p>
         </div>
     }
@@ -74,7 +74,7 @@
                 <td style="padding-left: 4px">@person.FromReservationDate </td>
                 <td style="padding-left: 4px">@person.ToReservationDate </td>
 @*                 <td style="padding-left: 4px">@Html.ActionLink("Удалить", "DeleteReservation", "Reservation", new {@person.Id}, null)</td> *@
-                <td style="padding-left: 4px"><button  onclick="remove(@person.Id)">Удалить</button></td>
+                <td style="padding-left: 4px; background-color: #98fff0;border-color: #98fff0"><button class="nav__link" onclick="remove(@person.Id)">Удалить</button></td>
                 <tr></tr>
                
             }

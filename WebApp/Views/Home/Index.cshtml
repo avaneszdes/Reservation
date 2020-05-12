@@ -24,11 +24,13 @@
     <div class="container">
         <div class="header__inner">
             <div class="header__logo">My Restourant</div>
-            <nav   class="nav">
+            <nav   class="nav" >
+            
                 @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
                 @Html.ActionLink("Войти от имени администратора   ", "AdminLogining", "Reservation" ,null, new { @class ="nav__link" })
                 @Html.ActionLink("Забронировать столик  ", "Index", "Reservation" ,null, new { @class ="nav__link"})
                 @Html.ActionLink("Удалить бронь", "DeleteClient", "Client" ,null, new { @class ="nav__link"})
+                @Html.ActionLink("О нас", "Success", "Home" ,null, new { @class ="nav__link"})
             </nav>
         </div>
     </div>

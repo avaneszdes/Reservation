@@ -47,8 +47,13 @@ namespace WebApp.Controllers
             reserv.Client.SurName = clientReservationViewModel.Surname;
             reserv.Client.Quantity = clientReservationViewModel.Quantity;
             reserv.Client.PhoneNumber = clientReservationViewModel.PhoneNumber;
-            var result =  _reservation.Create(reserv);
-            return Ok(result);
+            if (_reservation.CheckIfTimeIsAvailable(clientReservationViewModel.FromReservationDate,
+                clientReservationViewModel.ToReservationDate))
+            {
+                return Ok( _reservation.Create(reserv));
+            }
+            
+            return Ok(0);
         }
         
         [HttpGet]

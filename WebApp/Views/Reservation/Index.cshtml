@@ -38,7 +38,7 @@
                  $.ajax({url: `/Reservation/Reservation?FromReservationDate=${from}&ToReservationDate=${to}
                  &Name=${name}&Surname=${surname}&PhoneNumber=${phoheNumber}&Quantity=${quantity}`, success: function(result1)
                  {
-                     $('#results1').text(result1 > 0 ? `Вы успешно забронировали столик.Ваш ID : ${result1}` : '23424');
+                     $('#results1').text(result1 > 0 ? `Вы успешно забронировали столик.Ваш ID : ${result1}` : 'Это время занято');
                  }});
              }
     </script>
@@ -48,8 +48,7 @@
 <header class="header">
          <div class="container">
              <div class="header__inner">
-                 <div class="header__logo">
-                 @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
+                 <div class="header__logo" title="На главную">
                  @Html.ActionLink("My Restourant", "Index", "Home", null, new {@class = "nav__link"})
                  </div>
              </div>
@@ -69,12 +68,12 @@
             <input type="text" name="Имя" id="Name"/><br>
             <label> Фамилия </label><br>
             <input type="text" name="Фамилия" id="Surname"/><br>
-            <label>Количество</label><br>
+            <label>На сколько персон</label><br>
             <input type="text" id="Quantity"/><br>
             <label> Номер телефона </label><br>
             <input type="text" name="Номер телефона" id="PhoneNumber"/><br><br>
-            <input style=" background: transparent; font-weight: bold" type="submit" value="Забронировать" onclick="reservation()" class="nav__link"/><br>
-            <div style="margin-right: 20px" id="results1"></div>
+            <input style=" background-color: #98fff0; font-weight: bold;border-color: #98fff0" type="submit" value="Забронировать" onclick="reservation()" class="nav__link"/><br>
+            <div style="margin-right: 20px; font-weight: bold" id="results1"></div>
         </h4>
     </div>
 
@@ -85,8 +84,8 @@
             <input type="datetime-local" name="С" id="fromDate"/><br>
             <label>По</label><br>
             <input type="datetime-local" name="До" id="toDate"/><br><br>
-            <input style=" background: transparent; font-weight: bold" type="submit" value="Поиск" onclick="checkAvailability() " class="nav__link"/>
-            <div style="color: black" id="results"></div>
+            <input style="  background-color: #98fff0; font-weight: bold;border-color: #98fff0" type="submit" value="Поиск" onclick="checkAvailability() " class="nav__link"/>
+            <div style="margin-right: 20px"  id="results"></div>
         </h4>
     </div>
 

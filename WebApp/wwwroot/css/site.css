@@ -87,19 +87,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav__link {
+    font-family: 'Kaushan Script', cursive;
     display: inline-block;
     vertical-align: top;
-
     margin: 0 15px;
 
     position: relative;
 
-    color: #090303;
+    color: #11100c;
     text-decoration: none;
 
     transition: color .2s linear;
 }
-
 
 .nav__link:after {
     content: "";
@@ -107,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 3px;
     display: none;
-    background-color: #fce38a;
+    background-color: #fdfd59;
 
     position: absolute;
 
@@ -117,8 +116,10 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+
+
 .nav__link:hover {
-    color: #fce38a;
+    color: #fdfd59;
 }
 
 .nav__link:hover:after {

@@ -39,7 +39,7 @@
      <header class="header">
          <div class="container">
              <div class="header__inner">
-                 <div class="header__logo">
+                 <div class="header__logo" title="На главную">
                  @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
                  @Html.ActionLink("My Restourant", "Index", "Home", null, new {@class = "nav__link"})
                  </div>
@@ -59,7 +59,7 @@
             <input type="text" name="Id" id="PhoneNumber"/><br>    
             <label>Id</label><br>
             <input type="text" name="Номер телефона" id="Id"/><br><br>
-            <input style=" background: transparent; font-weight: bold" type="submit" value="Удалить" onclick="remove()" class="nav__link"/><br>
+            <input style=" background-color: #98fff0; font-weight: bold;border-color: #98fff0" type="submit" value="Удалить" onclick="remove()" class="nav__link"/><br>
             <div  id="results1"></div>
         </h4>
     </div>
