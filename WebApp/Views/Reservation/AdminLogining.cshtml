@@ -17,12 +17,15 @@
 
 <body>
 <header class="header">
-    <div class="container">
-        <div class="header__inner">
-            <div class="header__logo">My Restourant</div>
-        </div>
-    </div>
-</header>
+         <div class="container">
+             <div class="header__inner">
+                 <div class="header__logo">
+                 @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
+                 @Html.ActionLink("My Restourant", "Index", "Home", null, new {@class = "nav__link"})
+                 </div>
+             </div>
+         </div>
+     </header>
 <div class="intro">
 
     @using (Html.BeginForm("Logining", "Reservation", FormMethod.Post, new {style = "margin-left: 800px;top: 100px;"}))

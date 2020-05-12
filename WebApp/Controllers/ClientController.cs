@@ -47,14 +47,11 @@ namespace WebApp.Controllers
             return View();
         }
         
-        [HttpPost]
-        public IActionResult Delete(Client client)
+        [HttpGet]
+        public IActionResult Remove([FromQuery]Client client)
         {
-            if (_clientService.Delete(client))
-            {
-                return RedirectToAction("Success","Home" );
-            }
-            return RedirectToAction("DeleteClient");
+            
+            return Ok(_clientService.Delete(client));
         }
         
         

@@ -23,81 +23,72 @@
             $.ajax({url: `/Reservation/CheckIfDateIsAvailable?from=${fromDate}&to=${toDate}`, success: function(result){
                 $('#results').text(result === true ? 'Это время свободно' : 'Это время занято');
             }});
-            
-            
         }
-    
-      
      </script>
 
-    @* <script type="text/javascript"> *@
-    @*       *@
-    @*          function reservation (){ *@
-    @*              *@
-    @*              var fromDate = document.getElementById("fromDate").value; *@
-    @*              var toDate = document.getElementById("toDate").value; *@
-    @*               var fromDate = document.getElementById("fromDate").value; *@
-    @*                               var toDate = document.getElementById("toDate").value; *@
-    @*                                var fromDate = document.getElementById("fromDate").value; *@
-    @*              $.ajax({url: `/Reservation/Resrvation?from=${fromDate}&to=${toDate}`, success: function(result){ *@
-    @*                  $('#results').text(result === true ? 'Это время свободно' : 'Это время занято'); *@
-    @*              }}); *@
-    @*               *@
-    @*               *@
-    @*          } *@
-    @*       *@
-    @*         *@
-    @*       </script> *@
+    <script type="text/javascript">
+             function reservation (){
     
-   
+                  var from = document.getElementById("FromReservationDate").value;
+                  var to = document.getElementById("ToReservationDate").value;
+                  var name = document.getElementById("Name").value;
+                  var surname = document.getElementById("Surname").value;
+                  var phoheNumber = document.getElementById("PhoneNumber").value;
+                  var quantity = document.getElementById("Quantity").value;
+                 $.ajax({url: `/Reservation/Reservation?FromReservationDate=${from}&ToReservationDate=${to}
+                 &Name=${name}&Surname=${surname}&PhoneNumber=${phoheNumber}&Quantity=${quantity}`, success: function(result1)
+                 {
+                     $('#results1').text(result1 > 0 ? `Вы успешно забронировали столик.Ваш ID : ${result1}` : '23424');
+                 }});
+             }
+    </script>
 </head>
 
 <body>
+<header class="header">
+         <div class="container">
+             <div class="header__inner">
+                 <div class="header__logo">
+                 @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
+                 @Html.ActionLink("My Restourant", "Index", "Home", null, new {@class = "nav__link"})
+                 </div>
+             </div>
+         </div>
+     </header>
 
 <div class="intro">
-    @using (Html.BeginForm("Reservation", "Reservation", FormMethod.Post))
-    {
-        <div style="height: 400px; width: 250px; padding-left: 15px; background-color: white;border-radius: 10px;margin-left: 900px;top: 200px;position: absolute;  ">
-            <header>Введите данные для брони</header>
-            <h4>
-                <p>
-                    @Html.LabelFor(m => m, "Бронь с", new {style = "color:black"})<br/>
-                    @Html.TextBoxFor(model => model.FromReservationDate, new {type = "datetime-local"})
-                </p>
 
-                <p>
-                    @Html.LabelFor(m => m, "Бронь до", new {style = "color:black"})<br/>
-                    @Html.TextBoxFor(model => model.ToReservationDate, new {type = "datetime-local"})
-                </p>
-
-                <p>
-                    @Html.LabelFor(m => m.Name, "Имя", new {style = "color:black"})<br/>
-                    @Html.TextBoxFor(m => m.Name)
-                </p>
-
-                <p>
-                    @Html.LabelFor(m => m.Surname, "Фамилия", new {style = "color:black"})<br/>
-                    @Html.TextBoxFor(m => m.Surname)
-                </p>
-
-                <p>
-                    @Html.LabelFor(m => m.PhoneNumber, "Номер телефона", new {style = "color:black"})<br/>
-                    @Html.TextBoxFor(m => m.PhoneNumber, new {type = "phonenNumber"})
-                </p>
-
-                <p>
-                    <input style=" background: transparent; font-weight: bold" type="submit" value="Забронировать" class="nav__link"/>
-                </p>
-            </h4>
-        </div>
-    }
-    <div style="padding-left: 50px">
-        <input type="datetime-local" name="С" id="fromDate" /><br>
-        <input type="datetime-local" name="До" id="toDate"/><br>
-        <input type="submit" value="Поиск" onclick="checkAvailability()"/>
-     <div id="results"></div>
+    <div style="height: 500px; width: 250px; padding-left: 15px; background-color: white;border-radius: 10px;margin-left: 900px;top: 200px;position: absolute;  ">
+        <header>Введите данные для брони</header><br>
+        <h4>
+            <label> Бронь с </label><br>
+            <input type="datetime-local" name="Бронь с" id="FromReservationDate"/><br>
+            <label> Бронь до </label><br>
+            <input type="datetime-local" name="Бронь до" id="ToReservationDate"/><br>
+            <label> Имя </label><br>
+            <input type="text" name="Имя" id="Name"/><br>
+            <label> Фамилия </label><br>
+            <input type="text" name="Фамилия" id="Surname"/><br>
+            <label>Количество</label><br>
+            <input type="text" id="Quantity"/><br>
+            <label> Номер телефона </label><br>
+            <input type="text" name="Номер телефона" id="PhoneNumber"/><br><br>
+            <input style=" background: transparent; font-weight: bold" type="submit" value="Забронировать" onclick="reservation()" class="nav__link"/><br>
+            <div style="margin-right: 20px" id="results1"></div>
+        </h4>
     </div>
 
+    <div style=" padding-left: 15px;height: 250px; width: 250px;background-color: white;border-radius: 10px;margin-left: 500px; margin-top: -235px">
+        <header>Проверьте свободна ли дата</header><br>
+        <h4>
+            <label>С</label><br>
+            <input type="datetime-local" name="С" id="fromDate"/><br>
+            <label>По</label><br>
+            <input type="datetime-local" name="До" id="toDate"/><br><br>
+            <input style=" background: transparent; font-weight: bold" type="submit" value="Поиск" onclick="checkAvailability() " class="nav__link"/>
+            <div style="color: black" id="results"></div>
+        </h4>
+    </div>
 
 
 </div>

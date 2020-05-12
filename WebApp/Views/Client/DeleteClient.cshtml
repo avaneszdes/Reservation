@@ -10,47 +10,61 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
-    <title>Mysite</title>
-    <link rel="stylesheet" href="~/css/site.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+        <title>Mysite</title>
+        <link rel="stylesheet" href="~/css/site.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+                 function remove (){
+        
+                      var name = document.getElementById("Name").value;
+                      var surname = document.getElementById("Surname").value;
+                      var phoheNumber = document.getElementById("PhoneNumber").value;
+                      var id = document.getElementById("Id").value;
+                          
+                     $.ajax({url: `/Client/Remove?Name=${name}&Surname=${surname}&PhoneNumber=${phoheNumber}&Id=${id}`, success: function(result1)
+                     {
+                         $('#results1').text(result1 > 0 ? "Клиент удален " : 'Не верные данные');
+                     }});
+                     
+                     
+                 }
+        </script>
 </head>
 
 <body>
 <div class="intro">
-             @using (Html.BeginForm("Delete", "Client", FormMethod.Post, new {style="margin-left: 800px;top: 100px;"}))
-                {
-                    <div style="height: 300px; width: 200px; padding-left: 15px; background-color: white;border-radius: 10px; ">
-                    <p>
-                        <h4>
-                        @Html.LabelFor(m => m.SurName, "Имя",new {style = "color:black"})<br/>
-                        @Html.TextBoxFor(m => m.Name)
-                        </h4>
-                    </p>
-                    <p>
-                        <h4>
-                        @Html.LabelFor(m => m.Name, "Фамилия",new {style = "color:black"})<br/>
-                        @Html.TextBoxFor(m => m.SurName, "", new {type = "Фамилия"})
-                        </h4>
-                    </p>
-                    <p>
-                        <h4>
-                            @Html.LabelFor(m => m.PhoneNumber, "Номер телефона",new {style = "color:black"})<br/>
-                            @Html.TextBoxFor(m => m.PhoneNumber)
-                        </h4>
-                    </p>
-                    <p>
-                        <h4>
-                            @Html.LabelFor(m => m.Id, "Личный номер(Id)",new {style = "color:black"})<br/>
-                            @Html.TextBoxFor(m => m.Id)
-                        </h4>
-                    </p>
-                    
-                        <p>
-                            <input  type="submit" value="Удалить" class="nav__link"/>
-                        </p>
-                        </div>
-                }
-        </div>
+
+     <header class="header">
+         <div class="container">
+             <div class="header__inner">
+                 <div class="header__logo">
+                 @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
+                 @Html.ActionLink("My Restourant", "Index", "Home", null, new {@class = "nav__link"})
+                 </div>
+             </div>
+         </div>
+     </header>
+    <center>
+    <div style="height: 350px; width: 200px; padding-left: 15px;padding-right: 15px; background-color: white;border-radius: 10px; align-content: center;top: 300px ">
+    <link href="../Home/Index.cshtml" title="На главную" color="red" >
+        <label>Введите данные для удаления</label><br>
+        <h4>
+            <label> Имя </label><br>
+            <input type="text" name="Имя" id="Name"/><br>
+            <label> Фамилия </label><br>
+            <input type="text" name="Фамилия" id="Surname"/><br>
+            <label> Номер телефона </label><br>
+            <input type="text" name="Id" id="PhoneNumber"/><br>    
+            <label>Id</label><br>
+            <input type="text" name="Номер телефона" id="Id"/><br><br>
+            <input style=" background: transparent; font-weight: bold" type="submit" value="Удалить" onclick="remove()" class="nav__link"/><br>
+            <div  id="results1"></div>
+        </h4>
+    </div>
+    </center>
+</div>
 
 </body>
 </html>

@@ -9,40 +9,33 @@ namespace Reservation.Services
 {
     public class ReservationService : IReservationService
     {
-        readonly IReservationRepository reservation;
+        readonly IReservationRepository _reservation;
         public ReservationService(IReservationRepository reservation)
         {
-            this.reservation = reservation;
+            _reservation = reservation;
         }
-
-    
-       
-
         public int Create(Reserv reserv)
         {
-            reservation.Create(reserv);
+            _reservation.Create(reserv);
             return reserv.Id;
         }
 
         public IEnumerable<Reserv> GetAllReservationsIsBooking(DateTime date)
         {
-            return  reservation.GetAllReservationstIsBooking(date);
+            return  _reservation.GetAllReservationstIsBooking(date);
         }
-        public bool CheckIfTimeIsAvailablee(DateTime fromTime, DateTime toTime)
+        public bool CheckIfTimeIsAvailable(DateTime fromTime, DateTime toTime)
         {
-            var a = reservation.GetAllReservations().Any(x => fromTime >= x.FromReservationDate   && toTime <= x.ToReservationDate  );
-            return !a;
+            return !_reservation.GetAllReservations().Any(x => fromTime >= x.FromReservationDate && toTime <= x.ToReservationDate);;
         }
         public bool Delete(int id)
         {
-            return reservation.Delete(id);
+            return _reservation.Delete(id);
         }
 
         public Reserv GetReserv(int id)
         {
-            return reservation.GetReserv(id);
+            return _reservation.GetReserv(id);
         }
-
-      
     }
 }

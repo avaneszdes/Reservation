@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Reservation.Entities;
 using Reservation.Repository;
 using Reservation.Services;
 
-namespace Reservation.Tests
+namespace Reservation.Tests.UnitTests
 {
     [TestClass]
     public class ClientServiceTest

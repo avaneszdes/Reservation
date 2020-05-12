@@ -11,6 +11,8 @@ namespace Reservation.Entities
         public string SurName { get; set; }
         public string PhoneNumber { get; set; }
         
+        public int Quantity { get; set; }
+        
         public List<Reserv> Reservs { get; set; }
     }
 }

@@ -15,7 +15,8 @@ namespace WebApp.ViewModel
         public string Surname { get; set; }
         public string PhoneNumber { get; set; }
         
-        public  List<Client> Clients { get; set; }
-        public  bool Resuls { get; set; }
+        public int Quantity { get; set; }
+       
+        
     }
 }

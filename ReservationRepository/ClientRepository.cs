@@ -37,7 +37,7 @@ namespace Reservation.Repository
 
             return false;
 
-        }
+         }
 
         public IEnumerable<Client> GetAllClients()
         {

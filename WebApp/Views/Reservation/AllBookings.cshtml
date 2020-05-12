@@ -16,6 +16,16 @@
 </head>
 
 <body>
+<header class="header">
+         <div class="container">
+             <div class="header__inner">
+                 <div class="header__logo">
+                 @* <a class="nav__link" href="" target="_blank" >Забронировать столик</a> *@
+                 @Html.ActionLink("My Restourant", "Index", "Home", null, new {@class = "nav__link"})
+                 </div>
+             </div>
+         </div>
+     </header>
 <div class="tablee">
 
     @using (Html.BeginForm("AllBookings", "Reservation", FormMethod.Post))

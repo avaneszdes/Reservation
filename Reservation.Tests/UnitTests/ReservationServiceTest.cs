@@ -6,7 +6,7 @@ using Reservation.Entities;
 using Reservation.Repository;
 using Reservation.Services;
 
-namespace Reservation.Tests
+namespace Reservation.Tests.UnitTests
 {
     [TestClass]
     public class ReservationServiceTest
@@ -50,7 +50,7 @@ namespace Reservation.Tests
             var list = new List<Reserv>() {reesrv, reesrv2};
             mock.Setup(x => x.GetAllReservations()).Returns(list);
             var service = new ReservationService(mock.Object);
-            Assert.IsTrue(list.Contains(reesrv) == service.CheckIfTimeIsAvailablee(DateTime.Now , DateTime.Today));
+            Assert.IsTrue(list.Contains(reesrv) == service.CheckIfTimeIsAvailable(DateTime.Now , DateTime.Today));
         }
     }
 }

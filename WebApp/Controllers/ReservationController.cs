@@ -36,8 +36,8 @@ namespace WebApp.Controllers
         }
         
         
-        [HttpPost]
-        public IActionResult Reservation(ClientReservationViewModel clientReservationViewModel)
+        [HttpGet]
+        public IActionResult Reservation([FromQuery]ClientReservationViewModel clientReservationViewModel)
         {
             Reserv reserv = new Reserv();
             reserv.Client = new Client();
@@ -45,9 +45,10 @@ namespace WebApp.Controllers
             reserv.ToReservationDate = clientReservationViewModel.ToReservationDate ;
             reserv.Client.Name = clientReservationViewModel.Name;
             reserv.Client.SurName = clientReservationViewModel.Surname;
+            reserv.Client.Quantity = clientReservationViewModel.Quantity;
             reserv.Client.PhoneNumber = clientReservationViewModel.PhoneNumber;
-            _reservation.Create(reserv);
-            return RedirectToAction("Success", "Home");
+            var result =  _reservation.Create(reserv);
+            return Ok(result);
         }
         
         [HttpGet]
@@ -68,7 +69,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult CheckIfDateIsAvailable([FromQuery]DateTime from, [FromQuery]DateTime to)
         {
-            var result = _reservation.CheckIfTimeIsAvailablee(from, to);
+            var result = _reservation.CheckIfTimeIsAvailable(from, to);
 
             return Ok(result);
         }
@@ -79,7 +80,7 @@ namespace WebApp.Controllers
             return View();
         }
         
-        [HttpPost]
+        [HttpGet]
         public IActionResult AllBookings(DateTime dateTime)
         {
             List<Reserv> reservs = _reservation.GetAllReservationsIsBooking(dateTime).ToList();
