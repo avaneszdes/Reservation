@@ -16,18 +16,22 @@ namespace Reservation.Services
         }
         public int Create(Reserv reserv)
         {
-            
             _reservation.Create(reserv);
             return reserv.Id;
         }
 
         public IEnumerable<Reserv> GetAllReservationsIsBooking(DateTime date)
         {
-            return  _reservation.GetAllReservationstIsBooking(date);
+            return _reservation.GetAllReservationstIsBooking(date);
         }
         public bool CheckIfTimeIsAvailable(DateTime fromTime, DateTime toTime)
         {
-            return !_reservation.GetAllReservations().Any(x => fromTime >= x.FromReservationDate && toTime <= x.ToReservationDate);;
+            if (fromTime >= DateTime.Now && toTime < (fromTime + new TimeSpan(2, 2, 0)) && fromTime < toTime)
+            {
+                return !_reservation.GetAllReservations().Any(x => fromTime >= x.FromReservationDate && toTime <= x.ToReservationDate);
+            }
+            return false;
+
         }
         public bool Delete(int id)
         {

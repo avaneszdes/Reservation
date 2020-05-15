@@ -16,7 +16,7 @@ namespace Reservation.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder dBContextOptionBuilder)
         {
-            dBContextOptionBuilder.UseSqlServer("server=.; database=helloappdb; integrated security=true;");
+            dBContextOptionBuilder.UseSqlServer("server=DESKTOP-SRMV17E; database=helloappdb;Trusted_Connection=False;MultipleActiveResultSets=true;User ID=sa; Password=12345678;");
         }
             
     }

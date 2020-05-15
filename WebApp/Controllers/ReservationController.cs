@@ -47,12 +47,26 @@ namespace WebApp.Controllers
             reserv.Client.SurName = clientReservationViewModel.Surname;
             reserv.Client.Quantity = clientReservationViewModel.Quantity;
             reserv.Client.PhoneNumber = clientReservationViewModel.PhoneNumber;
+
+            if(clientReservationViewModel.Surname == null || clientReservationViewModel.Name == null)
+            {
+                return Ok(-1);
+            }
+            else if(clientReservationViewModel.PhoneNumber == null ||  clientReservationViewModel.PhoneNumber.Length != 12  )
+            {
+                return Ok(-2);
+            }
+            else if (clientReservationViewModel.Quantity > 15)
+            {
+                return Ok(-3);
+            }
+           
             if (_reservation.CheckIfTimeIsAvailable(clientReservationViewModel.FromReservationDate,
                 clientReservationViewModel.ToReservationDate))
             {
                 return Ok( _reservation.Create(reserv));
             }
-            
+
             return Ok(0);
         }
         

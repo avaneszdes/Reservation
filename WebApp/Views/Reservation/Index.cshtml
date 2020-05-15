@@ -27,18 +27,33 @@
      </script>
 
     <script type="text/javascript">
-             function reservation (){
-    
+        function reservation() {
+
                   var from = document.getElementById("FromReservationDate").value;
                   var to = document.getElementById("ToReservationDate").value;
                   var name = document.getElementById("Name").value;
                   var surname = document.getElementById("Surname").value;
                   var phoheNumber = document.getElementById("PhoneNumber").value;
-                  var quantity = document.getElementById("Quantity").value;
+                 var quantity = document.getElementById("Quantity").value;
                  $.ajax({url: `/Reservation/Reservation?FromReservationDate=${from}&ToReservationDate=${to}
                  &Name=${name}&Surname=${surname}&PhoneNumber=${phoheNumber}&Quantity=${quantity}`, success: function(result1)
-                 {
-                     $('#results1').text(result1 > 0 ? `Вы успешно забронировали столик.Ваш ID : ${result1}` : 'Это время занято');
+                     {
+                         if (result1 > 0) {
+                             $('#results1').text(`Вы успешно забронировали столик.Ваш ID` + result1);
+                         }
+                         else if (result1 === 0) {
+                             $('#results1').html('Бронь не может быть больше двух часов. <br/> Или это время занято');
+                             }
+                         else if (result1 === -1) {
+                             $('#results1').text('Заполните все поля');
+                         }
+                         else if (result1 === -2) {
+                             $('#results1').text('Введите корректно номер телефона');
+                         }
+                         else if (result1 === -3) {
+                             $('#results1').text('Число персон не может привышать 15');
+                         }
+
                  }});
              }
     </script>
@@ -49,7 +64,7 @@
          <div class="container">
              <div class="header__inner">
                  <div class="header__logo" title="На главную">
-                 @Html.ActionLink("My Restourant", "Index", "Home", null, new {@class = "nav__link"})
+                 @Html.ActionLink("My Restaurant", "Index", "Home", null, new {@class = "nav__link"})
                  </div>
              </div>
          </div>
@@ -71,13 +86,13 @@
             <label>На сколько персон</label><br>
             <input type="text" id="Quantity"/><br>
             <label> Номер телефона </label><br>
-            <input type="text" name="Номер телефона" id="PhoneNumber"/><br><br>
+            <input type="number" name="Номер телефона (375293498702)" id="PhoneNumber"/><br><br>
             <input style=" background-color: #98fff0; font-weight: bold;border-color: #98fff0" type="submit" value="Забронировать" onclick="reservation()" class="nav__link"/><br>
             <div style="margin-right: 20px; font-weight: bold" id="results1"></div>
         </h4>
     </div>
 
-    <div style=" padding-left: 15px;height: 250px; width: 250px;background-color: white;border-radius: 10px;margin-left: 500px; margin-top: -235px">
+    <div style=" padding-left: 15px;height: 250px; width: 250px;background-color: white;border-radius: 10px;margin-left: 500px; margin-top: -285px">
         <header>Проверьте свободна ли дата</header><br>
         <h4>
             <label>С</label><br>
